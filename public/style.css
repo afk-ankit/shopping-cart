@@ -1,0 +1,137 @@
+/* font-family: 'Ms Madi', cursive;
+font-family: 'Raleway', sans-serif;
+font-family: 'Roboto', sans-serif; */
+
+:root {
+    --color-dark: #0F1633;
+    --color-accent: #ff5367;
+    --font-heading: 'Raleway';
+    --weight-heading: 600;
+    --font-body: 'Raleway';
+    --weight-body: 600;
+    --font-nav: 'Raleway';
+    --weight-nav: 400;
+    --font-logo: 'Ms Madi';
+    --font-pricing: 'Roboto';
+    color: white;
+    font-family: 'Raleway', sans-serif;
+}
+
+* {
+    margin: 0 0;
+    padding: 0 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(90deg, rgba(15, 22, 51, 0.23) 0%, rgba(0, 40, 198, 0.1403) 57.53%), linear-gradient(270deg, rgba(15, 22, 51, 0.54) -1.18%, rgba(0, 40, 198, 0.2592) 46.53%), #0028C6;
+    overflow-x: hidden;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 4rem;
+    background-color: var(--color-dark);
+    padding: 0 5rem 0 5rem;
+}
+
+.navitems-container {
+    width: 25%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navitems {
+    font-weight: var(--weight-nav);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 14px;
+}
+
+.logo {
+    cursor: pointer;
+    font-family: var(--font-logo);
+    font-size: 2rem;
+}
+
+.main-container {
+    width: 100vw;
+    padding: 2rem 5rem 2rem 5rem;
+
+}
+
+.main-heading {
+    color: var(--color-dark);
+
+    font-size: 4rem;
+    font-weight: var(--weight-heading);
+    letter-spacing: 0.495em;
+}
+
+.main-grid {
+    padding-top: 1rem;
+    justify-content: space-between;
+    gap: 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.main-items {
+    overflow: hidden;
+    flex-basis: calc(100%/3.1);
+    /* outline: 4px solid blue; */
+    display: flex;
+    flex-direction: column;
+}
+
+.main-image-container {
+    overflow: hidden;
+    /* outline: 2px solid red; */
+    height: 22rem;
+}
+
+.main-description {
+    padding: 0.5rem 0 0.5rem 0;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    height: 8rem;
+}
+
+.main-rating {
+    font-size: 1.2rem;
+    color: var(--color-dark);
+}
+
+.main-button {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 0.2rem;
+    width: fit-content;
+    height: fit-content;
+    background-color: var(--color-dark);
+    transition: all ease-in-out 150ms;
+}
+
+.main-button:hover {
+    cursor: pointer;
+    color: var(--color-dark);
+    background-color: var(--color-accent);
+}
+
+.main-image {
+    transition: all ease-in-out 200ms;
+}
+
+.main-image:hover {
+    scale: 1.1;
+}
