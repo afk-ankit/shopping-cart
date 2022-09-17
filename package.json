@@ -2,6 +2,7 @@
   "name": "shopping-cart",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "serve": "nodemon app.js -e ejs,html,js"
   },
