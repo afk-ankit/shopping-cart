@@ -3,9 +3,37 @@
         <h1 class="main-heading">YOUR CART</h1>
         <% if (items.length>0) { %>
             <% items.forEach(element=> { %>
-                <% const found=list.findIndex((i)=>{
-                    if(i.id==element)
-                    }) %>
+                <% const found=list.findIndex((i)=>i.id==element) %>
+                    <div class="cart-list">
+                        <div class="cart-items">
+                            <div class="cart-img-container">
+                                <img src="<%= list[found].img %> " alt="">
+                            </div>
+                            <div class="cart-description">
+                                <p>
+                                    <%= list[found].title %>
+                                </p>
+                                <p style="font-family: 'Roboto', sans-serif;">
+                                    $<%= list[found].price %>
+                                </p>
+                                <div class="main-rating">
+                                    <% Array(Number(list[found].rating)).fill().forEach((item)=>{ %>
+                                        <i class="bi bi-star-fill"></i>
+                                        <%}) %>
+                                            <% if (Number(list[found].rating)<5 && Number(list[found].rating)>0) { %>
+                                                <% const length=5-Number(list[found].rating) %>
+                                                    <% Array(length).fill().forEach((item)=>{ %>
+                                                        <i class="bi bi-star"></i>
+
+                                                        <% })%>
+                                                            <% } %>
+                                </div>
+                                <button type="submit" class="main-button">
+                                    BUY NOW
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                     <% }) %>
 
                         <% } else { %>

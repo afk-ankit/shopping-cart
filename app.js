@@ -26,6 +26,9 @@ app.get('/item/:id', (req, res) => {
     })
 })
 app.get('/cart', (req, res) => {
+
+
+
     res.render('cart', {
         items: cartItem,
         list: item
