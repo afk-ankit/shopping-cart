@@ -1,44 +1,52 @@
 <%- include('navbar') %>
     <div class="main-container">
         <h1 class="main-heading">YOUR CART</h1>
-        <% if (items.length>0) { %>
-            <% items.forEach(element=> { %>
-                <% const found=list.findIndex((i)=>i.id==element) %>
-                    <div class="cart-list">
-                        <div class="cart-items">
-                            <div class="cart-img-container">
-                                <img src="<%= list[found].img %> " alt="">
-                            </div>
-                            <div class="cart-description">
-                                <p>
-                                    <%= list[found].title %>
-                                </p>
-                                <p style="font-family: 'Roboto', sans-serif;">
-                                    $<%= list[found].price %>
-                                </p>
-                                <div class="main-rating">
-                                    <% Array(Number(list[found].rating)).fill().forEach((item)=>{ %>
-                                        <i class="bi bi-star-fill"></i>
-                                        <%}) %>
-                                            <% if (Number(list[found].rating)<5 && Number(list[found].rating)>0) { %>
-                                                <% const length=5-Number(list[found].rating) %>
-                                                    <% Array(length).fill().forEach((item)=>{ %>
-                                                        <i class="bi bi-star"></i>
+        <% if (items) { %>
+            <% list.forEach((element,index)=> { %>
+                <div class="cart-list">
+                    <div class="cart-items">
+                        <div class="cart-img-container">
+                            <img src="<%= element.img %> " alt="">
+                        </div>
+                        <div class="cart-description">
+                            <p>
+                                <%= element.title %>
+                            </p>
+                            <p style="font-family: 'Roboto', sans-serif;">
+                                $<%= element.price %>
+                            </p>
+                            <div class="main-rating">
+                                <% Array(Number(element.rating)).fill().forEach((item)=>{ %>
+                                    <i class="bi bi-star-fill"></i>
+                                    <%}) %>
+                                        <% if (Number(element.rating)<5 && Number(element.rating)>0) { %>
+                                            <% const length=5-Number(element.rating) %>
+                                                <% Array(length).fill().forEach((item)=>{ %>
+                                                    <i class="bi bi-star"></i>
 
-                                                        <% })%>
-                                                            <% } %>
-                                </div>
+                                                    <% })%>
+                                                        <% } %>
+                            </div>
+                            <div class="cart-button-group">
                                 <button type="submit" class="main-button">
                                     BUY NOW
                                 </button>
+                                <% const id=index %>
+                                    <form action="/removeFromCart/<%= id %> " method="post">
+                                        <button type="submit" class="main-button">
+                                            REMOVE
+                                        </button>
+                                    </form>
+
                             </div>
                         </div>
                     </div>
-                    <% }) %>
+                </div>
+                <% }) %>
 
-                        <% } else { %>
-                            <h1>Cart Empty</h1>
-                            <% } %>
+                    <% } else { %>
+                        <h1>Cart Empty</h1>
+                        <% } %>
 
     </div>
     <%- include('footer') %>

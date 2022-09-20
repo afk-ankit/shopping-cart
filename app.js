@@ -1,10 +1,29 @@
+import cookieParser from 'cookie-parser';
 import express from 'express';
 import { item } from './public/item.js';
 const app = express();
 const port = process.env.PORT || 3000
+let foundItem = []
 
-let cartItem = []
+
+
+const validateCookie = (req, res, next) => {
+    const cookie = req.cookies.cartItems;
+    if (cookie) {
+        console.log('Found Cookies')
+        foundItem = cookie;
+        foundItem.push(req.params.id)
+        next();
+    }
+    else if (!cookie) {
+        console.log('No cookies')
+        foundItem = [req.params.id]
+        next()
+    }
+}
+
 //middlewares
+app.use(cookieParser())
 app.use(express.json());
 app.use(express.urlencoded({
     extended: true
@@ -26,20 +45,41 @@ app.get('/item/:id', (req, res) => {
     })
 })
 app.get('/cart', (req, res) => {
-
-
-
+    const found = []
+    const cartItem = req.cookies.cartItems
+    if (cartItem)
+        cartItem.forEach((i) => {
+            found.push(item[i - 1])
+        })
     res.render('cart', {
         items: cartItem,
-        list: item
+        list: found
     }
     )
 })
 
-app.post('/addToCart/:id', (req, res) => {
-    const id = Number(req.params.id);
-    cartItem.push(id);
+app.post('/addToCart/:id', validateCookie, (req, res) => {
+    res.cookie('cartItems', foundItem)
     res.redirect('/cart')
+})
+
+app.post('/removeFromCart/:id', (req, res) => {
+    const cartItem = req.cookies.cartItems
+    cartItem.splice(req.params.id, 1)
+    res.cookie("cartItems", cartItem)
+    res.redirect('/cart')
+})
+
+
+app.get('/cookie', (req, res) => {
+    const { cookies } = req;
+    res.send(cookies)
+    console.log(cookies)
+})
+
+app.get("/cookieset", (req, res) => {
+    res.cookie('cartItems', [1, 24, 235, 235, 2]);
+    res.redirect('/cookie')
 })
 
 //listening
@@ -48,3 +88,5 @@ app.listen(port, function () {
         "Server running on port http://localhost:3000"
     )
 })
+
+
