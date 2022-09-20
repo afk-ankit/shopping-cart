@@ -2,128 +2,15 @@
     <div class="main-container">
         <h2 class="main-heading">TRENDY STYLES</h2>
         <div class="main-grid">
-            <!-- <div class="main-items">
-                <div class="main-image-container">
-                    <img src="./item-pic/model1.png" alt="" width="100%" class="main-image">
-                </div>
-                <div class="main-description">
-                    <a class="main-title" style="font-weight: 500;" href="/item/1">Navy Blue T-shirt</a>
-                    <p class="main-pricing" style="font-family: 'Roboto', sans-serif;">$34.34</p>
-                    <div class="main-rating">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star"></i>
-                        <i class="bi bi-star"></i>
-                    </div>
-                    <div class="main-button">
-                        <p>Add to Cart</p>
-                    </div>
-                </div>
-            </div>
-            <div class="main-items">
-                <div class="main-image-container">
-                    <img src="./item-pic/model2.png" alt="" width="100%" class="main-image">
-                </div>
-                <div class="main-description">
-                    <p class="main-title" style="font-weight: 500;">Black Cowboy Hat</p>
-                    <p class="main-pricing" style="font-family: 'Roboto', sans-serif;">$12.34</p>
-                    <div class="main-rating">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star"></i>
-                    </div>
-                    <div class="main-button">
-                        <p>Add to Cart</p>
-                    </div>
-                </div>
-            </div>
-            <div class="main-items">
-                <div class="main-image-container">
-                    <img src="./item-pic/model3.png" alt="" width="100%" class="main-image">
-                </div>
-                <div class="main-description">
-                    <p class="main-title" style="font-weight: 500;">Yellow Hoodie Girl</p>
-                    <p class="main-pricing" style="font-family: 'Roboto', sans-serif;">$49.12</p>
-                    <div class="main-rating">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star"></i>
-                        <i class="bi bi-star"></i>
-                    </div>
-                    <div class="main-button">
-                        <p>Add to Cart</p>
-                    </div>
-                </div>
-            </div>
-            <div class="main-items">
-                <div class="main-image-container">
-                    <img src="./item-pic/model4.png" alt="" width="100%" class="main-image">
-                </div>
-                <div class="main-description">
-                    <p class="main-title" style="font-weight: 500;">Gorgeous Black</p>
-                    <p class="main-pricing" style="font-family: 'Roboto', sans-serif;">$59.74</p>
-                    <div class="main-rating">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star"></i>
-                        <i class="bi bi-star"></i>
-                    </div>
-                    <div class="main-button">
-                        <p>Add to Cart</p>
-                    </div>
-                </div>
-            </div>
-            <div class="main-items">
-                <div class="main-image-container">
-                    <img src="./item-pic/model5.png" alt="" width="100%" class="main-image">
-                </div>
-                <div class="main-description">
-                    <p class="main-title" style="font-weight: 500;">Crew-neck Black</p>
-                    <p class="main-pricing" style="font-family: 'Roboto', sans-serif;">$14.32</p>
-                    <div class="main-rating">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                    </div>
-                    <div class="main-button">
-                        <p>Add to Cart</p>
-                    </div>
-                </div>
-            </div>
-            <div class="main-items">
-                <div class="main-image-container">
-                    <img src="/item-pic/model6.png" alt="" width="100%" class="main-image">
-                </div>
-                <div class="main-description">
-                    <p class="main-title" style="font-weight: 500;">Light Grey Blazer</p>
-                    <p class="main-pricing" style="font-family: 'Roboto', sans-serif;">$90.14</p>
-                    <div class="main-rating">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                    </div>
-                    <div class="main-button">
-                        <p>Add to Cart</p>
-                    </div>
-                </div>
-            </div> -->
-
-            <!-- //item6 -->
             <% item.forEach(element=> { %>
                 <div class="main-items">
                     <div class="main-image-container">
                         <img src="<%=element.img%>" alt=" nopic" width="100%" class="main-image">
                     </div>
                     <div class="main-description">
+                        <span style="display: none;">
+                            <%= element.id %>
+                        </span>
                         <a class="main-title" style="font-weight: 500;" href="/item/<%=element.id%> ">
                             <%= element.title %>
                         </a>
@@ -142,9 +29,14 @@
                                                 <% })%>
                                                     <% } %>
                         </div>
-                        <div class="main-button">
-                            <p>Add to Cart</p>
-                        </div>
+
+                        <form action="/addToCart/<%= element.id %> " method="post">
+
+                            <button type="submit" class="main-button">
+                                Add to Cart
+                            </button>
+                        </form>
+
                     </div>
                 </div>
                 <% }) %>

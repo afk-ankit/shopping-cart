@@ -1,5 +1,16 @@
 <%- include('navbar') %>
-    <div>
-        <h2>Hero</h2>
+    <div class="main-container">
+        <h1 class="main-heading">YOUR CART</h1>
+        <% if (items.length>0) { %>
+            <% items.forEach(element=> { %>
+                <% const found=list.findIndex((i)=>{
+                    if(i.id==element)
+                    }) %>
+                    <% }) %>
+
+                        <% } else { %>
+                            <h1>Cart Empty</h1>
+                            <% } %>
+
     </div>
     <%- include('footer') %>

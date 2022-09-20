@@ -17,6 +17,11 @@ font-family: 'Roboto', sans-serif; */
     font-family: 'Raleway', sans-serif;
 }
 
+a {
+    text-decoration: none;
+    color: white;
+}
+
 * {
     margin: 0 0;
     padding: 0 0;
@@ -133,6 +138,14 @@ body {
     height: fit-content;
     background-color: var(--color-dark);
     transition: all ease-in-out 150ms;
+    color: white;
+    border: none;
+    text-decoration: none;
+    font-family: var(--font-pricing);
+}
+
+.main-button>button {
+    background-color: transparent;
 }
 
 .main-button:hover {
