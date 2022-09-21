@@ -51,9 +51,17 @@ app.get('/cart', (req, res) => {
         cartItem.forEach((i) => {
             found.push(item[i - 1])
         })
+
+    let total = found.reduce((total, element) => {
+        return total + Number(element.price)
+    }, 0)
+
+    total = Math.round(total)
+
     res.render('cart', {
         items: cartItem,
-        list: found
+        list: found,
+        total
     }
     )
 })

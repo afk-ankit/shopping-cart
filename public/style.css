@@ -105,7 +105,6 @@ body {
 .main-image-container {
     overflow: hidden;
     /* outline: 2px solid red; */
-    height: 22rem;
 }
 
 .main-description {
@@ -194,4 +193,15 @@ body {
 .cart-button-group {
     display: flex;
     gap: 1rem;
+}
+
+@media screen and (max-width: 1024px) {
+    .main-heading {
+        font-size: 3.06rem;
+    }
+
+    .main-items {
+        flex-basis: calc(100%/2.1);
+
+    }
 }
